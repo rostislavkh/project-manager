@@ -13,11 +13,10 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
     
 // mix.js('resources/js/default/default-lc.js', 'js');
 
-// mix.sass('resources/scss/app.scss', 'css');
+mix.sass('resources/scss/style.scss', 'css');
 
 mix.setPublicPath('public')
 mix.version();
