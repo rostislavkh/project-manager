@@ -31,4 +31,8 @@ class ProjectController extends Controller
             'is_active' => $request->value
         ]);
     }
+
+    public function isActive(Project $project) {
+        return response()->json($project->is_active ? true : false);
+    }
 }

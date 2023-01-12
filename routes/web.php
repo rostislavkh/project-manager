@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth']], function () {
     // API
     Route::get('/search', [ProjectController::class, 'search'])->name('search');
     Route::post('/set-project', [ProjectController::class, 'setProject'])->name('set-project');
+    Route::get('/is-active/{project:slug}', [ProjectController::class, 'isActive'])->name('is-active');
 });
 
 Auth::routes();
