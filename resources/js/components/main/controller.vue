@@ -21,7 +21,7 @@
                 <tr>
                     <th scope="row">1</th>
                     <td>Capital HLD</td>
-                    <td><a href="https://www.capital-hld.com">https://www.capital-hld.com</a></td>
+                    <td><a href="https://www.capital-hld.com" target="_blank">https://www.capital-hld.com</a></td>
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
@@ -33,7 +33,7 @@
                 <tr>
                     <th scope="row">2</th>
                     <td>E-STOKEN</td>
-                    <td><a href="https://stoken.site">https://stoken.site</a></td>
+                    <td><a href="https://stoken.site" target="_blank">https://stoken.site</a></td>
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
@@ -58,7 +58,7 @@
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Посилання: </span>
                     <span class="mobile-table__column_value"><a
-                            href="https://www.capital-hld.com">https://www.capital-hld.com</a></span>
+                            href="https://www.capital-hld.com" target="_blank">https://www.capital-hld.com</a></span>
                 </div>
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Статус: </span>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Посилання: </span>
-                    <span class="mobile-table__column_value"><a href="https://stoken.site">https://stoken.site</a></span>
+                    <span class="mobile-table__column_value"><a href="https://stoken.site" target="_blank">https://stoken.site</a></span>
                 </div>
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Статус: </span>
