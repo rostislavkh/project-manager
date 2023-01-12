@@ -43,6 +43,10 @@ body {
   gap: 15px;
 }
 
+.form-check-input {
+  cursor: pointer;
+}
+
 @media (max-width: 450px) {
   .table {
     display: none;

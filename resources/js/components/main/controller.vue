@@ -3,12 +3,9 @@
         <h1 class="title">Привіт!</h1>
         <h4 class="sub-title">Це менеджер проектів. Тут ти зможеш вирубити проект, по якому клієнт не заплатив мані. =)</h4>
         <hr class="mb-3 mt-3" />
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Пошук..." aria-label="Пошук..."
-                aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Знайти</button>
-        </div>
-        <table class="table">
+        <input type="text" class="form-control text-center" placeholder="Пошук..." aria-label="Пошук..." aria-describedby="button-addon2"
+            v-model="search_text" @input="filter">
+        <table class="table" v-if="projects">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -18,81 +15,39 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Capital HLD</td>
-                    <td><a href="https://www.capital-hld.com" target="_blank">https://www.capital-hld.com</a></td>
+                <tr v-for="(item, key) in projects" :key="key" :class="!item.is_view ? 'd-none' : ''">
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.name }}</td>
+                    <td><a :href="item.url" target="_blank">{{ item.url }}</a></td>
                     <td>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                            <label class="form-check-label text-bg-danger p-1 rounded-2 status-lable"
-                                for="flexSwitchCheckChecked">Неактивний</label>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>E-STOKEN</td>
-                    <td><a href="https://stoken.site" target="_blank">https://stoken.site</a></td>
-                    <td>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
-                                checked>
-                            <label class="form-check-label text-bg-success p-1 rounded-2 status-lable"
-                                for="flexSwitchCheckChecked">Активний</label>
+                            <input class="form-check-input" v-model="item.is_active" type="checkbox" role="switch">
+                            <label class="form-check-label p-1 rounded-2 status-lable" :class="item.is_active ? 'text-bg-success' : 'text-bg-danger'">{{ item.is_active ? 'Активний' : 'Неавтивний' }}</label>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="mobile-table">
-            <div class="mobile-table__item">
+            <div class="mobile-table__item" v-for="(item, key) in projects" :key="key" :class="!item.is_view ? 'd-none' : ''">
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">ID: </span>
-                    <span class="mobile-table__column_value">1</span>
+                    <span class="mobile-table__column_value">{{ item.id }}</span>
                 </div>
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Назва: </span>
-                    <span class="mobile-table__column_value">Capital HLD</span>
+                    <span class="mobile-table__column_value">{{ item.name }}</span>
                 </div>
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Посилання: </span>
-                    <span class="mobile-table__column_value"><a
-                            href="https://www.capital-hld.com" target="_blank">https://www.capital-hld.com</a></span>
+                    <span class="mobile-table__column_value"><a :href="item.url" target="_blank">{{ item.url }}</a></span>
                 </div>
                 <div class="mobile-table__row">
                     <span class="mobile-table__column_name">Статус: </span>
                     <span class="mobile-table__column_value">
                         <div class="form-check form-switch status-mobile">
-                            <input class="form-check-input mobile-swith" type="checkbox" role="switch"
-                                id="flexSwitchCheckChecked">
-                            <label class="form-check-label text-bg-danger p-1 rounded-2 status-lable"
-                                for="flexSwitchCheckChecked">Неактивний</label>
-                        </div>
-                    </span>
-                </div>
-            </div>
-            <div class="mobile-table__item">
-                <div class="mobile-table__row">
-                    <span class="mobile-table__column_name">ID: </span>
-                    <span class="mobile-table__column_value">2</span>
-                </div>
-                <div class="mobile-table__row">
-                    <span class="mobile-table__column_name">Назва: </span>
-                    <span class="mobile-table__column_value">E-STOKEN</span>
-                </div>
-                <div class="mobile-table__row">
-                    <span class="mobile-table__column_name">Посилання: </span>
-                    <span class="mobile-table__column_value"><a href="https://stoken.site" target="_blank">https://stoken.site</a></span>
-                </div>
-                <div class="mobile-table__row">
-                    <span class="mobile-table__column_name">Статус: </span>
-                    <span class="mobile-table__column_value">
-                        <div class="form-check form-switch status-mobile">
-                            <input class="form-check-input mobile-swith" type="checkbox" role="switch"
-                                id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label text-bg-success p-1 rounded-2 status-lable"
-                                for="flexSwitchCheckChecked">Активний</label>
+                            <input class="form-check-input status-mobile" v-model="item.is_active" type="checkbox" role="switch">
+                            <label class="form-check-label p-1 rounded-2 status-lable" :class="item.is_active ? 'text-bg-success' : 'text-bg-danger'">{{ item.is_active ? 'Активний' : 'Неавтивний' }}</label>
                         </div>
                     </span>
                 </div>
@@ -101,8 +56,30 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
-    
+    methods: {
+        async search() {
+            let data = null;
+            await axios.get('/search').then(response => (data = response.data));
+            this.projects = data;
+        },
+        filter() {
+            for (var key in this.projects) {
+                this.projects[key].is_view = this.projects[key].name.toLowerCase().indexOf(this.search_text.toLowerCase()) != -1 || this.projects[key].url.toLowerCase().indexOf(this.search_text.toLowerCase()) != -1 ? true : false;
+            }
+        }
+    },
+    mounted() {
+        this.search();
+    },
+    data() {
+        return {
+            search_text: '',
+            projects: null
+        }
+    }
 }
 </script>
 <style>
