@@ -26,7 +26,7 @@
                 <td>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Неактивний</label>
+                        <label class="form-check-label text-bg-danger p-1 rounded-2 status-lable" for="flexSwitchCheckChecked">Неактивний</label>
                     </div>
                 </td>
             </tr>
@@ -37,11 +37,59 @@
                 <td>
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Активний</label>
+                        <label class="form-check-label text-bg-success p-1 rounded-2 status-lable" for="flexSwitchCheckChecked">Активний</label>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class="mobile-table">
+        <div class="mobile-table__item">
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">ID: </span>
+                <span class="mobile-table__column_value">1</span>
+            </div>
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">Назва: </span>
+                <span class="mobile-table__column_value">Capital HLD</span>
+            </div>
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">Посилання: </span>
+                <span class="mobile-table__column_value"><a href="https://www.capital-hld.com">https://www.capital-hld.com</a></span>
+            </div>
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">Статус: </span>
+                <span class="mobile-table__column_value">
+                    <div class="form-check form-switch status-mobile">
+                        <input class="form-check-input mobile-swith" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                        <label class="form-check-label text-bg-danger p-1 rounded-2 status-lable" for="flexSwitchCheckChecked">Неактивний</label>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="mobile-table__item">
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">ID: </span>
+                <span class="mobile-table__column_value">2</span>
+            </div>
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">Назва: </span>
+                <span class="mobile-table__column_value">E-STOKEN</span>
+            </div>
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">Посилання: </span>
+                <span class="mobile-table__column_value"><a href="https://stoken.site">https://stoken.site</a></span>
+            </div>
+            <div class="mobile-table__row">
+                <span class="mobile-table__column_name">Статус: </span>
+                <span class="mobile-table__column_value">
+                    <div class="form-check form-switch status-mobile">
+                        <input class="form-check-input mobile-swith" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label text-bg-success p-1 rounded-2 status-lable" for="flexSwitchCheckChecked">Активний</label>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

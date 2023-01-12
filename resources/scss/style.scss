@@ -1,7 +1,60 @@
 body {
     background-color: #f8f9fa;
+    overflow: hidden;
 }
 
 .container {
     max-width: 700px;
+}
+
+.status-lable {
+    width: 100px;
+}
+
+.mobile-table {
+    display: none;
+
+    &__item {
+        padding: 10px;
+        border-bottom: 1px solid gray;
+
+        span {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+    }
+
+    &__column_name {
+        text-align: center;
+        width: 100px!important;
+        padding-right: 10px;
+    }
+
+    &__column_value {
+        text-align: center;
+    }
+
+    .status-mobile {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    .table {
+        display: none;
+    }
+
+    .mobile-table {
+        display: block;
+    }
 }
