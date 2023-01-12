@@ -17443,7 +17443,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "container d-flex flex-column justify-content-center text-center"
+  "class": "container d-flex flex-column justify-content-center text-center mt-3"
 };
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1 class=\"title\">Привіт!</h1><h4 class=\"sub-title\">Це менеджер проектів. Тут ти зможеш вирубити проект, по якому клієнт не заплатив мані. =)</h4><hr class=\"mb-3 mt-3\"><div class=\"input-group mb-3\"><input type=\"text\" class=\"form-control\" placeholder=\"Пошук...\" aria-label=\"Пошук...\" aria-describedby=\"button-addon2\"><button class=\"btn btn-outline-secondary\" type=\"button\" id=\"button-addon2\">Знайти</button></div>", 4);
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", {

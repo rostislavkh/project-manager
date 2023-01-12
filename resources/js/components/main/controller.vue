@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex flex-column justify-content-center text-center">
+    <div class="container d-flex flex-column justify-content-center text-center mt-3">
         <h1 class="title">Привіт!</h1>
         <h4 class="sub-title">Це менеджер проектів. Тут ти зможеш вирубити проект, по якому клієнт не заплатив мані. =)</h4>
         <hr class="mb-3 mt-3" />
