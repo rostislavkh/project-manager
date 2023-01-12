@@ -12,7 +12,7 @@
 </head>
 <body>
     
-    <main>
+    <main id="app">
         @yield('content')
     </main>
 
