@@ -4,9 +4,16 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens;
 
-use Orchid\Screen\Actions\Link;
+use App\Http\Requests\CreateProject;
+use App\Orchid\Layouts\ProjectList;
 use Orchid\Screen\Screen;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\Input;
+use Orchid\Support\Facades\Toast;
+use Orchid\Screen\Fields\Switcher;
 use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Actions\ModalToggle;
 
 class PlatformScreen extends Screen
 {
@@ -17,7 +24,11 @@ class PlatformScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'projects' => \App\Models\Project::filters()
+                ->defaultSort('id', 'desc')
+                ->paginate(25)
+        ];
     }
 
     /**
@@ -27,17 +38,7 @@ class PlatformScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Get Started';
-    }
-
-    /**
-     * Display header description.
-     *
-     * @return string|null
-     */
-    public function description(): ?string
-    {
-        return 'Welcome to your Orchid application.';
+        return 'Project list';
     }
 
     /**
@@ -49,16 +50,10 @@ class PlatformScreen extends Screen
     {
         return [
             Link::make('Website')
-                ->href('http://orchid.software')
-                ->icon('globe-alt'),
-
-            Link::make('Documentation')
-                ->href('https://orchid.software/en/docs')
-                ->icon('docs'),
-
-            Link::make('GitHub')
-                ->href('https://github.com/orchidsoftware/platform')
-                ->icon('social-github'),
+                ->href(env('APP_URL'))
+                ->icon('globe-alt')
+                ->target('_blank'),
+            ModalToggle::make(__('Create'))->icon('plus')->modal('create')->modalTitle(__('Create project'))->method('create')
         ];
     }
 
@@ -70,7 +65,30 @@ class PlatformScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::view('platform::partials.welcome'),
+            Layout::modal('create', Layout::rows([
+                Input::make('name')->title(__('Name'))->required(),
+                Input::make('url')->title(__('URL'))->required(),
+                Switcher::make('is_active')->checked()->title(__('Is active?'))->sendTrueOrFalse(),
+            ])),
+            ProjectList::class
         ];
+    }
+
+    public function create(CreateProject $request)
+    {
+        \App\Models\Project::create([
+            'name' => $request->name,
+            'url' => $request->url,
+            'is_active' => $request->is_active,
+        ]);
+
+        Toast::success(__('Project was created'));
+    }
+
+    public function remove(Request $request)
+    {
+        \App\Models\Project::find($request->id)->delete();
+
+        Toast::success(__('Project was removed'));
     }
 }
