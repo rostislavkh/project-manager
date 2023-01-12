@@ -21,7 +21,7 @@
                     <td><a :href="item.url" target="_blank">{{ item.url }}</a></td>
                     <td>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" v-model="item.is_active" type="checkbox" role="switch">
+                            <input class="form-check-input" v-model="item.is_active" type="checkbox" role="switch" @click="setProject(item)">
                             <label class="form-check-label p-1 rounded-2 status-lable" :class="item.is_active ? 'text-bg-success' : 'text-bg-danger'">{{ item.is_active ? 'Активний' : 'Неавтивний' }}</label>
                         </div>
                     </td>
@@ -46,7 +46,7 @@
                     <span class="mobile-table__column_name">Статус: </span>
                     <span class="mobile-table__column_value">
                         <div class="form-check form-switch status-mobile">
-                            <input class="form-check-input status-mobile" v-model="item.is_active" type="checkbox" role="switch">
+                            <input class="form-check-input status-mobile" v-model="item.is_active" type="checkbox" role="switch" @click="setProject(item)">
                             <label class="form-check-label p-1 rounded-2 status-lable" :class="item.is_active ? 'text-bg-success' : 'text-bg-danger'">{{ item.is_active ? 'Активний' : 'Неавтивний' }}</label>
                         </div>
                     </span>
@@ -69,6 +69,12 @@ export default {
             for (var key in this.projects) {
                 this.projects[key].is_view = this.projects[key].name.toLowerCase().indexOf(this.search_text.toLowerCase()) != -1 || this.projects[key].url.toLowerCase().indexOf(this.search_text.toLowerCase()) != -1 ? true : false;
             }
+        },
+        async setProject(project) {
+            await axios.post('/set-project', {
+                id: project.id,
+                value: !project.is_active
+            });
         }
     },
     mounted() {

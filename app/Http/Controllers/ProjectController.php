@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\SetProject;
 
 class ProjectController extends Controller
 {
@@ -23,5 +24,11 @@ class ProjectController extends Controller
         }
 
         return response()->json($result);
+    }
+
+    public function setProject(SetProject $request) {
+        Project::find($request->id)?->update([
+            'is_active' => $request->value
+        ]);
     }
 }

@@ -20863,6 +20863,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       for (var key in this.projects) {
         this.projects[key].is_view = this.projects[key].name.toLowerCase().indexOf(this.search_text.toLowerCase()) != -1 || this.projects[key].url.toLowerCase().indexOf(this.search_text.toLowerCase()) != -1 ? true : false;
       }
+    },
+    setProject: function setProject(project) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/set-project', {
+                id: project.id,
+                value: !project.is_active
+              });
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }))();
     }
   },
   mounted: function mounted() {
@@ -20923,7 +20940,7 @@ var _hoisted_8 = ["href"];
 var _hoisted_9 = {
   "class": "form-check form-switch"
 };
-var _hoisted_10 = ["onUpdate:modelValue"];
+var _hoisted_10 = ["onUpdate:modelValue", "onClick"];
 var _hoisted_11 = {
   "class": "mobile-table"
 };
@@ -20967,7 +20984,7 @@ var _hoisted_24 = {
 var _hoisted_25 = {
   "class": "form-check form-switch status-mobile"
 };
-var _hoisted_26 = ["onUpdate:modelValue"];
+var _hoisted_26 = ["onUpdate:modelValue", "onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
@@ -20994,7 +21011,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return item.is_active = $event;
       },
       type: "checkbox",
-      role: "switch"
+      role: "switch",
+      onClick: function onClick($event) {
+        return $options.setProject(item);
+      }
     }, null, 8 /* PROPS */, _hoisted_10), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, item.is_active]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["form-check-label p-1 rounded-2 status-lable", item.is_active ? 'text-bg-success' : 'text-bg-danger'])
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.is_active ? 'Активний' : 'Неавтивний'), 3 /* TEXT, CLASS */)])])], 2 /* CLASS */);
@@ -21011,7 +21031,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return item.is_active = $event;
       },
       type: "checkbox",
-      role: "switch"
+      role: "switch",
+      onClick: function onClick($event) {
+        return $options.setProject(item);
+      }
     }, null, 8 /* PROPS */, _hoisted_26), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, item.is_active]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["form-check-label p-1 rounded-2 status-lable", item.is_active ? 'text-bg-success' : 'text-bg-danger'])
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.is_active ? 'Активний' : 'Неавтивний'), 3 /* TEXT, CLASS */)])])])], 2 /* CLASS */);

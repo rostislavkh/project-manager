@@ -20,6 +20,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // API
     Route::get('/search', [ProjectController::class, 'search'])->name('search');
+    Route::post('/set-project', [ProjectController::class, 'setProject'])->name('set-project');
 });
 
 Auth::routes();
